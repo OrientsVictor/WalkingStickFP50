@@ -1,14 +1,19 @@
 {
-    "manifest_version": 3,
     "name": "WalkingStick",
+    "manifest_version": 3,
     "version": "0.0.1",
-
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["activeTab", "scripting"],
     "action": {
         "default_popup": "popup.html",
         "default_title": "Click to get access to WalkingStick Helpers."
     },
-
-    "permissions": ["scripting"],
-    "options_page": "options.html"
-
+    "commands": {
+        "startup": {
+            "suggested_key": "Alt+S",
+            "description": "injects code"
+        }
+    }
 }
