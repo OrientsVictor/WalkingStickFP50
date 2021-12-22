@@ -4,6 +4,11 @@
     "version": "0.0.1",
 
     "action": {
-        "default_popup": "popup.html"
-    }
+        "default_popup": "popup.html",
+        "default_title": "Click to get access to WalkingStick Helpers."
+    },
+
+    "permissions": ["scripting"],
+    "options_page": "options.html"
+
 }

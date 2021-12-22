@@ -1,0 +1,37 @@
+.body
+{
+    width: 100px;
+    min-width: 50%;
+    max-width: 100%;
+}
+
+a
+{
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #000000;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    color: #000000;
+    text-align: center;
+    transition: all 0.25;
+}
+
+a:hover
+{
+    color: #ffffff;
+    background-color: #000000;
+}
+
+@media all and (max-width: 30em)
+{
+    a
+    {
+        display: block;
+        margin: 0.4em auto;
+    }
+}
