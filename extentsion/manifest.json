@@ -1,11 +1,9 @@
 {
-    "name": "Getting Started Example",
-    "description": "Build an Extension!",
-    "version": "1.0",
     "manifest_version": 3,
+    "name": "WalkingStick",
+    "version": "0.0.1",
 
-    "background": {
-        "service_worker": "background.js"
-    },
-    "permissions": ["storage"]
+    "action": {
+        "default_popup": "popup.html"
+    }
 }
