@@ -1,4 +1,4 @@
-// background.js
-chrome.commands.onCommand.addListener((command) => {
-    console.log(`Command "${command}" triggered`);
-  });
+chrome.runtime.onStartup.addListener(function() {
+  window.open("startup.html");
+});
+
