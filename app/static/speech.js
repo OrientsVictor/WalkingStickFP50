@@ -1,5 +1,14 @@
 // Recognises speech
 
+function sendCommand(command){
+    let userCommand = {
+        "command": command
+    }
+    const request = new XMLHttpRequest();
+    request.open("POST", `/processSpeech/${JSON.stringify(userCommand)}`)
+    request.send();
+}
+
 // Initialising 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
@@ -19,9 +28,9 @@ recognition.onresult = function(event) {
     if (command == "")
     {
         document.body.style.backgroundColor = "red";
-        location.reload();
     }
     console.log(command);
+    sendCommand(command);
 };
 
 recognition.onspeechend = function() {
@@ -31,5 +40,4 @@ recognition.onspeechend = function() {
 };
 
 recognition.onerror = function() {
-    location.reload();
 };
