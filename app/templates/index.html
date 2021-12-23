@@ -2,4 +2,18 @@
 
 {% block body %}
     <h1>This is WalkingStick.</h1>
+    <div id="speechContainer">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <br>
+            <input type="submit" value="upload">
+        </form>
+        
+        {% if transcript != "" %}
+        <div id="speechTranscriptContainer">
+            <h1>Transcript</h1>
+            <p>{{ transcript }}</p>
+        </div>
+        {% endif %}
+    </div>
 {% endblock %}
