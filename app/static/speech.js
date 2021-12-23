@@ -4,9 +4,14 @@ function sendCommand(command){
     let userCommand = {
         "command": command
     }
-    const request = new XMLHttpRequest();
-    request.open("POST", `/processSpeech/${JSON.stringify(userCommand)}`)
-    request.send();
+
+    $.ajax({
+        type: "POST",
+        url: "/command",
+        data: JSON.stringify(userCommand),
+        contentType: "application/JSON",
+        dataType: 'json'
+    })
 }
 
 // Initialising 
