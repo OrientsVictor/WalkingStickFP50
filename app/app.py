@@ -23,12 +23,6 @@ def get_javascript_data():
         COMMAND = JSONdict["command"]
         print(f'{COMMAND}', file=sys.stdout)
 
-        if "search" in COMMAND:
-            print("TODOSearch")
-        elif ("music" and "play") in COMMAND:
-            print("TODO")
-        else:
-            print("TODO")
         return json.dumps({'success' : True}), 200, {'ContentType' : 'application/json'}
 
 @app.route("/redirect")

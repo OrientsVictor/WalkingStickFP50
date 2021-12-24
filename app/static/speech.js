@@ -1,7 +1,7 @@
 // Recognises speech
 
 // This function sends command to python
-function sendCommand(command){
+function execute(command){
     let userCommand = {
         "command": command
     }
@@ -14,7 +14,18 @@ function sendCommand(command){
         dataType: 'json',
         success: function(){
             var q = command;
-            window.open('http://google.com/search?q='+q);
+            if (command.includes("search"))
+            {
+                window.open('http://google.com/search?q='+q);
+            }
+            else if (command.includes("play"))
+            {
+                window.open('http://google.com/search?q='+q);
+            }
+            else
+            {
+                location.reload()
+            }
 
         }        
     })
@@ -43,7 +54,7 @@ recognition.onresult = function(event) {
         document.body.style.backgroundColor = "#cc0000";
     }
     console.log(command);
-    sendCommand(command);
+    execute(command);
 };
 
 recognition.onspeechend = function() {
