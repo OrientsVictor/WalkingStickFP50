@@ -1,5 +1,6 @@
 // Recognises speech
 
+// This function sends command to python
 function sendCommand(command){
     let userCommand = {
         "command": command
@@ -10,7 +11,12 @@ function sendCommand(command){
         url: "/command",
         data: JSON.stringify(userCommand),
         contentType: "application/JSON",
-        dataType: 'json'
+        dataType: 'json',
+        success: function(){
+            var q = command;
+            window.open('http://google.com/search?q='+q);
+
+        }        
     })
 }
 
@@ -25,14 +31,16 @@ recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 
+// Start recognisation
 recognition.start();
 
+// Get command
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
     if (command == "")
     {
-        document.body.style.backgroundColor = "red";
+        document.body.style.backgroundColor = "#cc0000";
     }
     console.log(command);
     sendCommand(command);
@@ -40,9 +48,5 @@ recognition.onresult = function(event) {
 
 recognition.onspeechend = function() {
     recognition.stop();
-    document.body.style.backgroundColor = "green";
     document.getElementById("listenText").innerHTML = "Listened :)";
-};
-
-recognition.onerror = function() {
 };

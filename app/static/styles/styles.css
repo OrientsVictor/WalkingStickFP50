@@ -1,0 +1,13 @@
+html
+{
+    background-color: #000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 100pt;
+    color: azure;
+}
+
+p
+{
+    text-align: center;
+    padding: 100pt;
+}
