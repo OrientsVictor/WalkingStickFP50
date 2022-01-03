@@ -109,6 +109,10 @@ function sendCommand(command){
         dataType: 'json',
         success: function(){
             var q = command;
+            q = q.toLowerCase();
+            q = q
+            .replace(/[.,/#!$%^&*;:{}=-_`~()]/g, "")
+            .replace(/s{2,}/g, " ");
 
             // Forks in the road!
             if (q.search("news") != -1)
