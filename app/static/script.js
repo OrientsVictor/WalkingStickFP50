@@ -1,6 +1,6 @@
 // Recognises speech
 
-// Loading the google custom search api
+// Loading the google custom search api and executing search
 gapi.load("client", loadClient);
 
 function loadClient() {
@@ -8,28 +8,57 @@ function loadClient() {
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
         .then(function() { console.log("GAPI client loaded for API Google Search"); },
                 function(err) { console.error("Error loading GAPI client for API", err); });
-    }
+}
     
 function execute(searchSTR) {
     return gapi.client.search.cse.list({
         "c2coff": "1",
         "cx": "e52b1341a05b9d03a",
+        "lr": "lang_en",
         "num": 1,
         "q": searchSTR,
         "safe": "off",
         "searchType": "searchTypeUndefined",
-        "siteSearchFilter": "siteSearchFilterUndefined"
+        "siteSearchFilter": "siteSearchFilterUndefined",
+        "sort": "date"
     })
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
-                console.log("Response", response);
                 const link = response.result.items[0].link;
                 window.location.replace(link);
                 },
                 function(err) { console.error("Execute error", err); });
-    }
+}
 
-// Loading the YouTube API
+// Loading the google custom search api and executing define
+gapi.load("client", loadClientDE);
+
+function loadClientDE() {
+    gapi.client.setApiKey("AIzaSyCkkPjwU8KOoxmIf1llcG_Be5OLeTk13Js");
+    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
+        .then(function() { console.log("GAPI client loaded for API Google Search"); },
+                function(err) { console.error("Error loading GAPI client for API", err); });
+}
+    
+function executeDE(searchSTR) {
+    return gapi.client.search.cse.list({
+        "c2coff": "1",
+        "cx": "4a1b9e2633f5d9c73",
+        "lr": "lang_en",
+        "num": 1,
+        "q": searchSTR,
+        "safe": "off",
+        "searchType": "searchTypeUndefined",
+        "siteSearchFilter": "siteSearchFilterUndefined",
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                const link = response.result.items[0].link;
+                window.location.replace(link);
+                },
+                function(err) { console.error("Execute error", err); });
+}
+// Loading the YouTube API and executing play
 gapi.load("client", loadClientYT);
   
 function loadClientYT() {
@@ -39,7 +68,6 @@ function loadClientYT() {
                 function(err) { console.error("Error loading GAPI client for API", err); });
 }
 
-// Execute function for the YouTube API
 function executePlay(SearchString) {
     const searchString = SearchString;
     const maxresult = 1;
@@ -67,7 +95,7 @@ function executePlay(SearchString) {
     function(err) { console.error("Execute error", err); });
 }
 
-// This function sends command to python
+// This function sends command to python and execute different functions
 function sendCommand(command){
     let userCommand = {
         "command": command
@@ -81,10 +109,17 @@ function sendCommand(command){
         dataType: 'json',
         success: function(){
             var q = command;
+
+            // Forks in the road!
             if (q.search("news") != -1)
             {
                 q = q.replace("news", "");
                 execute(q);
+            }
+            else if (q.search("define") != -1)
+            {
+                q = q.replace("define", "");
+                executeDE(q);
             }
             else if (q.search("play") != -1)
             {
@@ -100,7 +135,7 @@ function sendCommand(command){
     })
 }
 
-// Initialising 
+// Initialising speech-to-text
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var grammar = '#JSGF V1.0;'
@@ -126,6 +161,7 @@ recognition.onresult = function(event) {
     sendCommand(command);
 };
 
+// Stoping recognition and giving thumbs up to user
 recognition.onspeechend = function() {
     recognition.stop();
     document.getElementById("listenText").innerHTML = "Listened :)";

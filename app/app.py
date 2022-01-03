@@ -7,9 +7,6 @@ import sys
 # Initiating Flask
 app = Flask(__name__)
 
-# Command Global variable
-COMMAND = ""
-
 # Route to Command (Index) page
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -21,8 +18,6 @@ def get_javascript_data():
     if request.method == "POST":
         JSONdict = request.get_json()
         COMMAND = JSONdict["command"]
-        print(f'{COMMAND}', file=sys.stdout)
-
         return json.dumps({'success' : True}), 200, {'ContentType' : 'application/json'}
 
 @app.route("/redirect")
