@@ -1,6 +1,6 @@
 console.log("WalkingStick ready to go!")
 
-txt = document.getElementsByClassName("examples")[0].innerText;
+txt = document.getElementsByClassName("vg")[0].innerText;
 console.log(txt)
 
 function tts()

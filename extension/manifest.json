@@ -9,7 +9,7 @@
             "js": ["news.js"]
         },
         {
-            "matches": ["<all_urls>"],
+            "matches": ["https://*.merriam-webster.com/*"],
             "js": ["define.js"]
         }
     ]
