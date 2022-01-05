@@ -1,7 +1,12 @@
 {
     "manifest_version": 2,
     "name": "WalkingStick",
-    "version": "0.1",
+    "description": "This is the companion extension for the WalkingStick web app. This duo will help people with disability to navigate the web.",
+    "version": "1.0",
+
+    "chrome_url_overrides": {
+        "newtab": "temp.html"
+    },
     
     "content_scripts": [
         {
@@ -12,5 +17,13 @@
             "matches": ["https://*.merriam-webster.com/*"],
             "js": ["define.js"]
         }
-    ]
+    ],
+
+    "background": {
+        "scripts": ["background.js"]
+    },
+
+    "browser_action": {
+        "default_icon": "icon128.png"
+    }
 }

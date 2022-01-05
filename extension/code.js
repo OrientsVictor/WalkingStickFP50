@@ -1,0 +1,1 @@
+window.open("https://walkingstickfp50.herokuapp.com/", "_self");
