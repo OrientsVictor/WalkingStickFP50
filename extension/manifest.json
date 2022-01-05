@@ -5,10 +5,12 @@
     
     "content_scripts": [
         {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": ["jquery.js", "content.js"]
+            "matches": ["https://*.bbc.com/*"],
+            "js": ["news.js"]
+        },
+        {
+            "matches": ["<all_urls>"],
+            "js": ["define.js"]
         }
     ]
 }

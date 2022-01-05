@@ -6,14 +6,14 @@ gapi.load("client", loadClient);
 function loadClient() {
     gapi.client.setApiKey("AIzaSyCkkPjwU8KOoxmIf1llcG_Be5OLeTk13Js");
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
-        .then(function() { console.log("GAPI client loaded for API Google Search"); },
+        .then(function() { console.log("GAPI client loaded for API Google News"); },
                 function(err) { console.error("Error loading GAPI client for API", err); });
 }
     
 function execute(searchSTR) {
     return gapi.client.search.cse.list({
         "c2coff": "1",
-        "cx": "e52b1341a05b9d03a",
+        "cx": "8b698c9657b23195f",
         "lr": "lang_en",
         "num": 1,
         "q": searchSTR,
@@ -36,14 +36,14 @@ gapi.load("client", loadClientDE);
 function loadClientDE() {
     gapi.client.setApiKey("AIzaSyCkkPjwU8KOoxmIf1llcG_Be5OLeTk13Js");
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
-        .then(function() { console.log("GAPI client loaded for API Google Search"); },
+        .then(function() { console.log("GAPI client loaded for API Google Dictionary"); },
                 function(err) { console.error("Error loading GAPI client for API", err); });
 }
     
 function executeDE(searchSTR) {
     return gapi.client.search.cse.list({
         "c2coff": "1",
-        "cx": "4a1b9e2633f5d9c73",
+        "cx": "80dba5ff4342c4ac0",
         "lr": "lang_en",
         "num": 1,
         "q": searchSTR,
@@ -58,6 +58,7 @@ function executeDE(searchSTR) {
                 },
                 function(err) { console.error("Execute error", err); });
 }
+
 // Loading the YouTube API and executing play
 gapi.load("client", loadClientYT);
   
