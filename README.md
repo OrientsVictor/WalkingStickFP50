@@ -62,7 +62,11 @@ This is a Flask web application and is uploaded to [Heroku](www.heroku.com). It 
 
 5. **Procfile and requirements.txt:** Contains requirements for the web app. 
 
+#### Design Choice
+
+The last thing I would like to talk about is my design choices, mostly to answer the question that why have I separated this project into two parts, the web app and the extension. The reason behind this is because of simplicity and efficiency. If I were to include the web app in the extension, some of the scripts would be blocked by Chrome because of security reasons. Also, is is more flexible to separate this so that any other extension or web app could utilise the WalkingStick web app.
+
 ##### And that is how the project works!
 
-### This was WalkingStick. Final Project for CS50X by Sourjya Sarkar.
-### [Github Profile](https://github.com/SourjyaSarkar2005/)
+#### This was WalkingStick. Final Project for CS50X by Sourjya Sarkar.
+#### [Github Profile](https://github.com/SourjyaSarkar2005/)
