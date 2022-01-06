@@ -1,10 +1,15 @@
-// Recognises speech
+/* 
+Recognises speech and performs action depending on the command 
+This is WalkingStick.
+Final Project for CS50x by Sourjya Sarkar.
+*/
+
 
 // Loading the google custom search api and executing search
 gapi.load("client", loadClient);
 
 function loadClient() {
-    gapi.client.setApiKey("AIzaSyCkkPjwU8KOoxmIf1llcG_Be5OLeTk13Js");
+    gapi.client.setApiKey("API_Key");
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
         .then(function() { console.log("GAPI client loaded for API Google News"); },
                 function(err) { console.error("Error loading GAPI client for API", err); });
@@ -34,7 +39,7 @@ function execute(searchSTR) {
 gapi.load("client", loadClientDE);
 
 function loadClientDE() {
-    gapi.client.setApiKey("AIzaSyCkkPjwU8KOoxmIf1llcG_Be5OLeTk13Js");
+    gapi.client.setApiKey("API_Key");
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest")
         .then(function() { console.log("GAPI client loaded for API Google Dictionary"); },
                 function(err) { console.error("Error loading GAPI client for API", err); });
@@ -63,7 +68,7 @@ function executeDE(searchSTR) {
 gapi.load("client", loadClientYT);
   
 function loadClientYT() {
-    gapi.client.setApiKey("AIzaSyCkkPjwU8KOoxmIf1llcG_Be5OLeTk13Js");
+    gapi.client.setApiKey("API_Key");
     return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
         .then(function() { console.log("GAPI client loaded for API"); },
                 function(err) { console.error("Error loading GAPI client for API", err); });
@@ -120,20 +125,23 @@ function sendCommand(command){
             {
                 q = q.replace("news", "");
                 execute(q);
+                document.getElementById("listenText").innerHTML = "Listened :)";
             }
             else if (q.search("define") != -1)
             {
                 q = q.replace("define", "");
                 executeDE(q);
+                document.getElementById("listenText").innerHTML = "Listened :)";
             }
             else if (q.search("play") != -1)
             {
                 q = q.replace("play", "");
                 executePlay(q);
+                document.getElementById("listenText").innerHTML = "Listened :)";
             }
             else
             {
-                window.location.reload();
+                document.getElementById("listenText").innerHTML = "Huh? :( (Refresh Page)";
             }
 
         }        
@@ -158,16 +166,10 @@ recognition.start();
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
-    if (command == "")
-    {
-        document.body.style.backgroundColor = "#cc0000";
-    }
-    console.log(command);
     sendCommand(command);
 };
 
 // Stoping recognition and giving thumbs up to user
 recognition.onspeechend = function() {
     recognition.stop();
-    document.getElementById("listenText").innerHTML = "Listened :)";
 };

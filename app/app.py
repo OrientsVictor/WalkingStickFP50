@@ -1,3 +1,9 @@
+"""
+    This is the flask web app.
+    This is WalkingStick.
+    Final Project for CS50X by Sourjya Sarkar.
+"""
+
 # Importing required libraries and functions
 from flask import Flask, render_template, request, redirect
 import json
@@ -17,7 +23,3 @@ def get_javascript_data():
         JSONdict = request.get_json()
         COMMAND = JSONdict["command"]
         return json.dumps({'success' : True}), 200, {'ContentType' : 'application/json'}
-
-@app.route("/redirect")
-def redirect():
-    return render_template("redirect.html")

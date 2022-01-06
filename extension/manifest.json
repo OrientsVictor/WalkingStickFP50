@@ -1,3 +1,10 @@
+/* 
+Manifest file for the Chrome Extension.
+This is WalkingStick.
+Final Project for CS50x by Sourjya Sarkar.
+*/
+
+
 {
     "manifest_version": 2,
     "name": "WalkingStick",
@@ -5,25 +12,25 @@
     "version": "1.0",
 
     "chrome_url_overrides": {
-        "newtab": "temp.html"
+        "newtab": "Ntab.html"
     },
     
     "content_scripts": [
         {
             "matches": ["https://*.bbc.com/*"],
-            "js": ["news.js"]
+            "js": ["scripts/news.js"]
         },
         {
             "matches": ["https://*.merriam-webster.com/*"],
-            "js": ["define.js"]
+            "js": ["scripts/define.js"]
         }
     ],
 
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["scripts/background.js"]
     },
 
     "browser_action": {
-        "default_icon": "icon128.png"
+        "default_icon": "images/icon128.png"
     }
 }
