@@ -64,3 +64,5 @@ This is a Flask web application and is uploaded to [Heroku](www.heroku.com). It 
 
 ##### And that is how the project works!
 
+### This was WalkingStick. Final Project for CS50X by Sourjya Sarkar.
+### [Github Profile](https://github.com/SourjyaSarkar2005/)
