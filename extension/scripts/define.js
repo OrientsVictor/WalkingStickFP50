@@ -5,14 +5,28 @@ Final Project for CS50x by Sourjya Sarkar.
 */
 
 // Gets the definitions
-txt = document.getElementsByClassName("vg")[0].innerText;
 
-// Text to Speech Function
+txt = document.getElementsByClassName("pseg")[0].innerText;
+
+txt = txt.replace(/(\r\n|\n|\r)/gm, "");
+
+console.log(txt);
+
+// This function reads the article
 function tts()
 {
-    var msg = new SpeechSynthesisUtterance();
-    msg.text = txt;
-    window.speechSynthesis.speak(msg);
+    window.speechSynthesis.cancel();
+    myTimeout = setTimeout(myTimer, 10000);
+    var utt = new SpeechSynthesisUtterance(txt);
+
+    utt.onend =  function() { clearTimeout(myTimeout); }
+    window.speechSynthesis.speak(utt);
+}
+
+function myTimer() {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+        myTimeout = setTimeout(myTimer, 10000);
 }
 
 // Text to Speech function is executed on any keypress
