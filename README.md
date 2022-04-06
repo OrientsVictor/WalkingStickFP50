@@ -35,7 +35,7 @@ Now let's talk about the functioning of the project.
 
 2. **Ntab.html:** This is the HTML document that is first loaded after opening a new tab. A script associated with it (*code.js*) effectively redirects the new tab to [web app](https://walkingstickfp50.herokuapp.com/).
 
-3. **Text-to-Speech scripts:** The scripts in this category include *define.js*, *news.js*, and *startup.js*. All of these scripts get a certain type of text from the websites (for example, *news.js* gets a text from the article tag in the news webpage provided by [BBC](www.bbc.com)) and then read aloud those texts.
+3. **Text-to-Speech scripts:** The scripts in this category include *define.js*, *news.js*, and *startup.js*. All of these scripts get a certain type of text from the websites (for example, *news.js* gets a text from the article tag in the news webpage provided by [Associated Press News](www.apnews.com)) and then read aloud those texts.
 
 4. **background.js**: As said earlier, its purpose in life is to load *startup.html* when the extension is installed for the first time.
 
@@ -51,7 +51,7 @@ This is a Flask web application and is uploaded to [Heroku](www.heroku.com). It 
 
 2. **script.js:** This is the most important part of the Flask application. This script first takes the voice command from the user, by utilising the native voice recognition framework built-in most browsers (chromium-based), Web Speech API to be specific. I have referred to [Mozilla's guide](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) on how to achieve this. After that, using the same Web Speech API, I have analysed the command.
 
-- When there is a "define" or "news" keyword in the command, the keyword is first removed from the command string. Then I have utilised [Google's Programmable Search Engine](https://programmablesearchengine.google.com/about/) API to search the definition of the word (or phrase) or news regarding that word or phrase respectively. To do that, I have first created two customized search engines on the programmable search engine's control panel, one for looking definition and the other for news articles, which would only look for a definition in [Merriam-Webster's online dictionary](https://www.merriam-webster.com/) and news article in [BBC's online website](www.bbc.com). Then, with the help of the API, I have searched for the command string in the search engines and then utilised the API's return value (a JSON file) to obtain the first relevant result and redirect it to that result.
+- When there is a "define" or "news" keyword in the command, the keyword is first removed from the command string. Then I have utilised [Google's Programmable Search Engine](https://programmablesearchengine.google.com/about/) API to search the definition of the word (or phrase) or news regarding that word or phrase respectively. To do that, I have first created two customized search engines on the programmable search engine's control panel, one for looking definition and the other for news articles, which would only look for a definition in [The Free Dictionary](https://www.thefreedictionary.com/) and news article in [Associated Press News](www.apnews.com). Then, with the help of the API, I have searched for the command string in the search engines and then utilised the API's return value (a JSON file) to obtain the first relevant result and redirect it to that result.
 
 - Similarly, I have used the YouTube API to play music or videos.
 

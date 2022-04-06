@@ -5,7 +5,7 @@ Final Project for CS50x by Sourjya Sarkar.
 */
 
 // Gets the article 
-let txt = document.getElementsByTagName("article")[0].innerText;
+let txt = document.getElementsByClassName("Article")[0].innerText;
 txt = txt.replace(/(\r\n|\n|\r)/gm, "");
 
 console.log(txt);
