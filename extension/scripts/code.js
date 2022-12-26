@@ -4,4 +4,4 @@ This is WalkingStick.
 Final Project for CS50x by Sourjya Sarkar.
 */
 
-window.open("https://walkingstickfp50.herokuapp.com/", "_self");
+window.open("http://walkingstick.pythonanywhere.com/", "_self");
