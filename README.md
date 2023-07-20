@@ -1,3 +1,5 @@
+> This project is currently not maintained and the web app does not work anymore
+
 # This is WalkingStick.
 
 #### Demonstration Video: https://youtu.be/Oucc_cqdNdA
